@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>معمل الفيزياء الافتراضي — مستر محمد محمود</title>
+<meta name="description" content="معمل فيزياء افتراضي ثلاثي الأبعاد للصف الأول: عشر محطات تجارب، شرح صوتي، واختبار بشهادة. يعمل بدون إنترنت.">
+<meta name="author" content="مستر محمد محمود — مركز التدريب، شركة ترسانة الإسكندرية">
+<meta name="theme-color" content="#14204A">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="معمل الفيزياء">
+<meta property="og:title" content="معمل الفيزياء الافتراضي">
+<meta property="og:description" content="عشر محطات تجارب ثلاثية الأبعاد مع شرح صوتي لمستر محمد محمود.">
+<meta property="og:image" content="icons/og.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/app.css?v=202611030737">
+</head><body>
+<div id="welcome" class="welcome" style="display:none"></div>
+<div class="app">
+  <header class="top"><div class="who" id="who"></div>
+    <div class="xpw"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L25 14 L37 15 L28 23 L31 35 L20 29 L9 35 L12 23 L3 15 L15 14 Z" fill="#FFC727" stroke="#B87F00" stroke-width="2.5" stroke-linejoin="round"/></svg><div><b id="xpn"></b><div class="xpbar"><i id="xpb"></i></div></div></div>
+    <div class="bdw"><svg viewBox="0 0 40 44" aria-hidden="true"><path d="M10 2h8l4 12-6 2zM30 2h-8l-4 12 6 2z" fill="#3D5AFE"/><circle cx="20" cy="28" r="14" fill="#FFC727" stroke="#C08A00" stroke-width="3"/><circle cx="20" cy="28" r="8" fill="#FFE48A"/></svg><b id="bdn"></b></div>
+    <span class="tools"><button class="ib" id="binst" title="ثبّت المعمل كتطبيق" aria-label="ثبّت المعمل كتطبيق" hidden></button><button class="ib" id="bs" title="المؤثرات الصوتية" aria-label="المؤثرات الصوتية"></button><button class="ib" id="bv" title="صوت المعلم" aria-label="صوت المعلم"></button><button class="ib" id="bd" title="الوضع الليلي" aria-label="الوضع الليلي"></button><button class="ib" id="bf" title="ملء الشاشة" aria-label="ملء الشاشة"></button></span></header>
+  <main class="wrap" id="m"></main>
+  <img id="brand-logo" alt="" hidden><nav id="nav" hidden></nav>
+</div>
+<div class="dock" id="dock"><button class="face" aria-label="إظهار أو إخفاء كلام المستر"><img id="face" alt="مستر محمد محمود"></button>
+  <div class="msg" role="status" aria-live="polite"><div class="mh"><b>مستر محمد محمود</b><span class="wave" id="wave"></span><span class="sp"><button id="tr" title="إعادة الشرح" aria-label="إعادة الشرح"></button><button id="tx" title="إخفاء" aria-label="إخفاء"></button></span></div><div class="tx" id="say"></div></div></div>
+<div id="toasts"></div><canvas id="confetti"></canvas>
+<noscript><p style="padding:20px;font-family:sans-serif">المعمل يحتاج تشغيل JavaScript في المتصفح.</p></noscript>
+<script>const IMG_T="assets/img/teacher.jpg",IMG_TP="assets/img/teacher-portrait.jpg",IMG_L="assets/img/logo.jpg";</script>
+<script src="assets/data.js?v=202611030737"></script>
+<script src="voice/kareem/pack.js?v=202611030737"></script>
+<script src="voice/shakir/pack.js?v=202611030737" onerror="void 0"></script>
+<script src="assets/app.js?v=202611030737"></script>
+</body></html>
