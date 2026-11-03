@@ -1,8 +1,8 @@
 /* Physics Lab — service worker: works offline after the first visit */
 const BUILD = '__BUILD__';
-const CORE_VER = '202611030938';
+const CORE_VER = '202611030958';
 const CACHE = 'physlab-' + CORE_VER + '-' + BUILD;
-const CORE = ["./", "index.html", "manifest.webmanifest", "assets/app.css?v=202611030938", "assets/app.js?v=202611030938", "assets/data.js?v=202611030938", "voice/kareem/pack.js?v=202611030938", "assets/fonts/alexandria-arabic.woff2", "assets/fonts/alexandria-latin.woff2", "assets/fonts/tajawal-arabic-500.woff2", "assets/fonts/tajawal-latin-500.woff2", "assets/fonts/tajawal-arabic-800.woff2", "assets/fonts/tajawal-latin-800.woff2", "assets/img/teacher.jpg", "assets/img/teacher-portrait.jpg", "assets/img/logo.jpg", "icons/favicon.svg", "icons/icon-192.png", "icons/icon-512.png"];
+const CORE = ["./", "index.html", "manifest.webmanifest", "assets/app.css?v=202611030958", "assets/app.js?v=202611030958", "assets/data.js?v=202611030958", "voice/kareem/pack.js?v=202611030958", "assets/fonts/alexandria-arabic.woff2", "assets/fonts/alexandria-latin.woff2", "assets/fonts/tajawal-arabic-500.woff2", "assets/fonts/tajawal-latin-500.woff2", "assets/fonts/tajawal-arabic-800.woff2", "assets/fonts/tajawal-latin-800.woff2", "assets/img/teacher.jpg", "assets/img/teacher-portrait.jpg", "assets/img/logo.jpg", "icons/favicon.svg", "icons/icon-192.png", "icons/icon-512.png"];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));

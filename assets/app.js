@@ -68,7 +68,7 @@ const ic=(k,cls='')=>`<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke
 window.VPACKS=window.VPACKS||{};VPACKS.kareem=VPACKS.kareem||{name:'كريم',note:'فصحى واضحة'};
 const VNAMES=()=>Object.keys(VPACKS);
 const vname=()=>VPACKS[P().vname]?P().vname:(VPACKS.shakir?'shakir':'kareem');
-const hasClip=k=>!!LINES[k];
+const hasClip=k=>!!(k&&VLINES[k]);
 const IS_FILE=location.protocol==='file:';
 const Teacher=(()=>{const au=new Audio();au.preload='auto';let an=null,src=null,queue=[],lastKeys=[],lastText='',typeT=0,raf=0;
 const bars=()=>$$('#wave i');
@@ -359,7 +359,7 @@ function pCards(m,L){const G=[['الفيزياء والنماذج',0,10],['ال�
 m.innerHTML=plate(L,'كل نقطة في الفصل معها رسمة توضحها، وبعضها متحرك. انقر على أي بطاقة والمستر هيشرحها بصوته.')+mission('cards','اقرأ 10 بطاقات على الأقل (انقر عليها) لتحصل على شارة «قارئ الصور».','<div class="res" id="cnt">0 / 10</div>')+
 G.map(q=>`<div class="grp"><h2>${q[0]}</h2><span>${q[2]-q[1]} بطاقة</span></div><div class="cards">${CA.slice(q[1],q[2]).map((c,i)=>`<button class="pc" data-i="${q[1]+i}"><b>${c[0]}</b>${W(c[2])}<p>${LTX(c[1])}</p></button>`).join('')}</div>`).join('');
 let fired=false;m.querySelectorAll('.pc').forEach(e=>e.onclick=()=>{const i=+e.dataset.i,c=CA[i];$$('.pc.playing').forEach(p=>p.classList.remove('playing'));e.classList.add('seen','playing');seen.add(i);sfx('click');$('#cnt').textContent=`${Math.min(seen.size,10)} / 10`;
-  if(seen.size>=10&&!fired){fired=true;complete('cards','cards_done')}else Teacher.say('card'+i,c[0]+': '+c[1])});
+  if(seen.size>=10&&!fired){fired=true;complete('cards',['card'+i,'cards_done'],c[0]+': '+c[1]+' '+LINES.cards_done)}else Teacher.say('card'+i,c[0]+': '+c[1])});
 Teacher.say('cards_start')}
 
 /* ================= 3 MEASUREMENT ================= */
