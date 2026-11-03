@@ -28,10 +28,10 @@
 **أو من المتصفح:** Add file ← Upload files، واسحب الملفات. المتصفح بيقبل 100 ملف في المرة، فارفع فولدر `voice` لوحده في مرة، وباقي الملفات في مرة تانية. اتأكد إن فولدر `.github` اترفع.
 
 ### 3) شغّل GitHub Pages
-Settings ← Pages ← في **Source** اختار **GitHub Actions**.
+Settings ← Pages ← في **Source** اختار **Deploy from a branch**، والفرع **main** والفولدر **/ (root)**.
 
 ### 4) استنى دقيقتين
-من تبويب **Actions** هتلاقي «نشر المعمل على GitHub Pages» شغال. أول مرة بيولّد صوت شاكر (حوالي دقيقة)، وبعدها اللينك بيظهر:
+من تبويب **Actions** هتلاقي «توليد صوت شاكر» بيولّد الجمل الناقصة بصوت شاكر ويحفظها، وGitHub Pages بينشر المعمل. بعد دقيقتين اللينك بيظهر:
 
 ```
 https://اسم-حسابك.github.io/physics-lab/
@@ -63,4 +63,4 @@ https://اسم-حسابك.github.io/physics-lab/
 | `voice/shakir/` | صوت شاكر (بيتولّد تلقائياً) |
 | `sw.js` و`manifest.webmanifest` و`icons/` | تطبيق الموبايل والعمل بدون نت |
 | `tools/` | سكريبت توليد صوت شاكر |
-| `.github/workflows/deploy.yml` | النشر التلقائي على GitHub Pages |
+| `.github/workflows/deploy.yml` | توليد صوت شاكر تلقائياً على GitHub |

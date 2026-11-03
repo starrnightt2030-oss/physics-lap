@@ -87,6 +87,13 @@ function show(text){const box=$('#say');$('#dock').classList.remove('min');clear
 // say(keys, text?) : keys = clip key | array | null.  text overrides the caption.
 function say(keys,text){keys=keys==null?[]:[].concat(keys);const cap=text!=null?text:keys.map(k=>LINES[k]||'').join(' ');lastKeys=keys;lastText=cap;stop();clearTimeout(minT);show(cap);queue=keys.slice();if(!P().voice||!keys.some(hasClip))autoMin(Math.max(6000,cap.length*90));playNext()}
 return{say,stop,replay:()=>say(lastKeys,lastText)}})();
+/* every static explanation has a recorded clip keyed by a hash of its text */
+const normT=t=>String(t).replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();
+const clipKey=t=>{const s=normT(t);let h=5381;for(let i=0;i<s.length;i++)h=((h*33)^s.charCodeAt(i))>>>0;return 'x'+h.toString(36)};
+const clipFor=t=>{if(!t)return null;const k=clipKey(t);return VLINES[k]?k:null};
+const SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>';
+function listenTargets(root){const out=[];root.querySelectorAll('.sthead .stt p, .facts>div, .mission>p, .panel>.note, .labcol>.note:not([id]), .ctl>.note').forEach(el=>{if(el.id)return;let t;if(el.matches('.facts>div')){const h=el.querySelector('h4'),p=el.querySelector('p');t=(h?h.textContent.trim()+'. ':'')+(p?p.textContent:'')}else t=el.textContent;out.push({el,text:normT(t)})});return out}
+function addListen(root){listenTargets(root).forEach(({el,text})=>{const k=clipFor(text);if(!k||el.querySelector(':scope>.lis'))return;const b=document.createElement('button');b.className='lis';b.type='button';b.setAttribute('aria-label','اسمع الشرح');b.title='اسمع الشرح';b.innerHTML=SPK;b.onclick=e=>{e.stopPropagation();actx();Teacher.say(k,text)};el.appendChild(b)})}
 const praiseK=()=>'praise'+rnd(0,4),wrongK=()=>'wrong'+rnd(0,2);
 
 /* text helper: isolate latin/formula runs inside arabic text */
@@ -154,8 +161,8 @@ function sortGame(root,voice,onAll){dragSort(root,(ch,bin)=>{const lab=ch.textCo
 function mcq(el,qs,onDone,quiet){let i=0,sc=0,stk=0;const rec=[];const K=['أ','ب','ج','د'];const draw=()=>{if(i>=qs.length){onDone&&onDone(sc,qs.length,rec);return}const q=qs[i],op=shuffle(q[1].map((o,j)=>[o,j===0]));
 el.innerHTML=`<div class="qh"><span class="qn">سؤال ${i+1} من ${qs.length}</span>${q[3]&&typeof TOPN=="function"?`<span class="tchip">${TOPN(q[3])}</span>`:''}${stk>=2?`<span class="streak"><svg width="18" height="22" viewBox="0 0 30 36" aria-hidden="true"><path d="M15 2 C20 10 28 14 26 24 C24 32 18 34 15 34 C10 34 4 31 4 23 C4 17 9 14 10 8 C13 12 14 14 15 2 Z" fill="#FF6B5A"/><path d="M15 16 C18 21 21 23 20 28 C19 31 17 32 15 32 C12 32 10 30 10 27 C10 23 13 22 15 16 Z" fill="#FFC727"/></svg>${stk} متتالية</span>`:''}<span class="qs">الدرجة ${sc}</span></div><div class="segs" style="grid-template-columns:repeat(${qs.length},minmax(0,1fr))">${qs.map((_,k)=>`<i class="${k<rec.length?(rec[k].ok?'ok':'no'):k==i?'now':''}"></i>`).join('')}</div><div class="qt">${LTX(q[0])}</div><div class="opts">${op.map((o,j)=>`<button class="opt" data-c="${o[1]?1:0}" data-t="${esc(o[0])}"><span class="k">${K[j]}</span><span>${LTX(o[0])}</span></button>`).join('')}</div><div class="qx" aria-live="polite"></div>`;
 el.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const ok=b.dataset.c=='1';rec.push({q,ok,ch:b.dataset.t});el.querySelectorAll('.opt').forEach(o=>{o.disabled=true;if(o.dataset.c=='1')o.classList.add('right')});if(ok){sc++;stk++}else{stk=0;b.classList.add('wrong')}const sg=el.querySelectorAll('.segs i')[i];if(sg)sg.className=ok?'ok':'no';sfx(ok?'ok':'no');
-if(!quiet){const vk=ok?praiseK():wrongK();Teacher.say(vk,ok?(LINES[vk]+(q[2]?' '+q[2]:'')):`الإجابة الصحيحة: «${q[1][0]}». ${q[2]||''}`)}
-el.querySelector('.qx').innerHTML=`<div class="qexp ${ok?'good':'bad'}"><img src="${IMG_T}" alt=""><p>${ok?'برافو!':'الإجابة الصحيحة: «'+LTX(q[1][0])+'».'} ${q[2]?LTX(q[2]):''}</p><button class="btn">${i<qs.length-1?'السؤال التالي':'عرض النتيجة'}</button></div>`;const nb=el.querySelector('.qx .btn');nb.focus({preventScroll:true});nb.onclick=()=>{i++;draw()}})};draw()}
+if(!quiet){const vk=ok?praiseK():wrongK(),xk=clipFor(q[2]);Teacher.say(xk?[vk,xk]:vk,ok?(LINES[vk]+(q[2]?' '+q[2]:'')):`الإجابة الصحيحة: «${q[1][0]}». ${q[2]||''}`)}
+el.querySelector('.qx').innerHTML=`<div class="qexp ${ok?'good':'bad'}"><img src="${IMG_T}" alt=""><p>${ok?'برافو!':'الإجابة الصحيحة: «'+LTX(q[1][0])+'».'} ${q[2]?LTX(q[2]):''}</p>${clipFor(q[2])?`<button class="lis" type="button" aria-label="اسمع التوضيح" title="اسمع التوضيح">${SPK}</button>`:''}<button class="btn">${i<qs.length-1?'السؤال التالي':'عرض النتيجة'}</button></div>`;const lb=el.querySelector('.qexp .lis');if(lb)lb.onclick=()=>{actx();Teacher.say(clipFor(q[2]),q[2])};const nb=el.querySelector('.qx .btn');nb.focus({preventScroll:true});nb.onclick=()=>{i++;draw()}})};draw()}
 
 /* ---------------- loop & keyboard ---------------- */
 let raf=0,timers=[],keyH=null;
@@ -580,7 +587,7 @@ ${mission('solved','تابع حل 3 مسائل مختلفة حتى آخر خطو
 let cur=0,k=0,fired=false;const fin=new Set();
 const sh=()=>{const p=PR[cur];$$('#ps button').forEach(b=>{b.classList.toggle('on',+b.dataset.i==cur);b.title=PR[+b.dataset.i][0]});$('#pt').textContent=p[0];$('#ptx').innerHTML=LTX(p[1]);$('#st').innerHTML=p[2].slice(0,k).map((q,i)=>`<div class="res ${k==p[2].length&&i==k-1?'fin':''}">${LTX(q)}</div>`).join('');
   if(k==p[2].length){fin.add(cur);$('#sc').textContent=`${Math.min(fin.size,3)} / 3`;if(fin.size>=3&&!fired){fired=true;setTimeout(()=>complete('solved','solved_done'),900)}}};
-$('#nx').onclick=()=>{const p=PR[cur];if(k<p[2].length){k++;sfx('click');if(k==p[2].length)Teacher.say('solved_final',LINES.solved_final+' '+p[2][k-1]);else Teacher.say(null,'الخطوة '+k+': '+p[2][k-1]);sh()}};
+$('#nx').onclick=()=>{const p=PR[cur];if(k<p[2].length){k++;sfx('click');const sk=clipFor(p[2][k-1]);if(k==p[2].length)Teacher.say(sk?['solved_final',sk]:'solved_final',LINES.solved_final+' '+p[2][k-1]);else Teacher.say(sk,'الخطوة '+k+': '+p[2][k-1]);sh()}};
 $('#al').onclick=()=>{k=PR[cur][2].length;sh();Teacher.say('solved_all')};
 $('#rs').onclick=()=>{k=0;sh()};$$('#ps button').forEach(b=>b.onclick=()=>{cur=+b.dataset.i;k=0;sh();Teacher.say('prob'+cur,PR[cur][1])});
 sh();Teacher.say('solved_start')}
@@ -650,7 +657,7 @@ let cur='home';
 
 function updTop(){if(!S)return;const lv=Math.min(LV.length-1,Math.floor(S.xp/100)),nb=Object.keys(S.done).filter(k=>k!='home').length;$('#who').innerHTML=`<span class="av">${esc(S.name.trim()[0]||'؟')}</span><span><b>${esc(S.name)}</b><small>المستوى ${lv+1} • ${LV[lv]}</small></span>`;$('#xpn').textContent=S.xp+' نقطة';$('#xpb').style.width=(S.xp%100)+'%';$('#bdn').textContent=nb+' من '+(LABS.length-1)+' شارات'}
 function updNav(){}
-function go(id){const L=LABS.find(l=>l.id==id)||LABS[0];cancelAnimationFrame(raf);timers.forEach(clearInterval);timers=[];keyH=null;cur=L.id;SLC=0;const m=$('#m');m.innerHTML='';try{L.fn(m,L)}catch(e){console.error(e);m.innerHTML='<div class="panel no">حدث خطأ: '+esc(e.message)+'</div>'}m.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>go('home'));if(L.id!='home'){const k=LABS.indexOf(L),nx=LABS[k+1];m.insertAdjacentHTML('beforeend',`<nav class="stnav" aria-label="التنقل بين المحطات"><button class="btn ghost" data-to="home">${icon3d('home',34)} الخريطة</button>${nx?`<button class="btn" data-to="${nx.id}">${icon3d(nx.icon,34)} المحطة الجاية: ${nx.t}</button>`:''}</nav>`);m.querySelectorAll('[data-to]').forEach(b=>b.onclick=()=>go(b.dataset.to))}document.body.classList.toggle('onhome',L.id=='home');scrollTo(0,0);try{history.replaceState(null,'','#'+cur)}catch(e){}}
+function go(id){const L=LABS.find(l=>l.id==id)||LABS[0];cancelAnimationFrame(raf);timers.forEach(clearInterval);timers=[];keyH=null;cur=L.id;SLC=0;const m=$('#m');m.innerHTML='';try{L.fn(m,L)}catch(e){console.error(e);m.innerHTML='<div class="panel no">حدث خطأ: '+esc(e.message)+'</div>'}m.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>go('home'));if(L.id!='home'){const k=LABS.indexOf(L),nx=LABS[k+1];m.insertAdjacentHTML('beforeend',`<nav class="stnav" aria-label="التنقل بين المحطات"><button class="btn ghost" data-to="home">${icon3d('home',34)} الخريطة</button>${nx?`<button class="btn" data-to="${nx.id}">${icon3d(nx.icon,34)} المحطة الجاية: ${nx.t}</button>`:''}</nav>`);m.querySelectorAll('[data-to]').forEach(b=>b.onclick=()=>go(b.dataset.to))}document.body.classList.toggle('onhome',L.id=='home');addListen(m);scrollTo(0,0);try{history.replaceState(null,'','#'+cur)}catch(e){}}
 function btns(){$('#bs').classList.toggle('off',!P().sound);$('#bv').classList.toggle('off',!P().voice);document.body.classList.toggle('dark',!!P().dark)}
 
 /* ================= WELCOME / STUDENTS ================= */
@@ -691,5 +698,5 @@ function init(){$('#brand-logo').src=IMG_L;$('#face').src=IMG_T;
   $('#bf').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
   $('#face').onclick=()=>$('#dock').classList.toggle('min');$('#tx').onclick=()=>{$('#dock').classList.add('min');Teacher.stop()};$('#tr').onclick=()=>{actx();Teacher.replay()};
   $('#wave').innerHTML='<i></i>'.repeat(7);
-  if(DB.current&&DB.profiles[DB.current]){S=DB.profiles[DB.current];begin(false);Teacher.say(null,'أهلاً بعودتك يا '+S.name+'! اضغط على أي محطة عشان تكمل.')}else showWelcome()}
+  if(DB.current&&DB.profiles[DB.current]){S=DB.profiles[DB.current];begin(false);Teacher.say('greet_back','أهلاً بعودتك يا '+S.name+'! '+LINES.greet_back)}else showWelcome()}
 (document.fonts&&document.fonts.load?Promise.all([document.fonts.load('900 20px Alexandria'),document.fonts.load('800 16px Tajawal'),document.fonts.load('500 16px Tajawal')]):Promise.resolve()).catch(()=>{}).then(init);

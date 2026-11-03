@@ -1,21 +1,23 @@
-name: نشر المعمل على GitHub Pages
+name: توليد صوت شاكر
+
+# GitHub Pages بينشر المعمل من فرع main مباشرة.
+# الخطوة دي بتولّد أي جمل ناقصة بصوت شاكر وتحفظها في المستودع، فيتنشر المعمل بالصوتين.
 
 on:
   push:
     branches: [main]
+    paths: ['tools/lines.json', 'tools/make_shakir.py', '.github/workflows/deploy.yml']
   workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: shakir
+  cancel-in-progress: false
 
 jobs:
-  build:
+  shakir:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,33 +26,14 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: توليد صوت شاكر (مرة واحدة، وبعدها بيتحفظ في المستودع)
+      - name: توليد الجمل الناقصة بصوت شاكر
         run: |
           pip install --quiet edge-tts
           python tools/make_shakir.py
 
-      - name: حفظ ملفات صوت شاكر في المستودع
+      - name: حفظ الصوت في المستودع
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add voice/shakir
-          git diff --cached --quiet || (git commit -m "صوت شاكر" && git push) || true
-
-      - name: رقم الإصدار
-        run: sed -i "s/__BUILD__/${GITHUB_SHA::8}/" sw.js
-
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          git diff --cached --quiet || (git commit -m "صوت شاكر: جمل جديدة" && git pull --rebase -q && git push)
