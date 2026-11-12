@@ -1,0 +1,58 @@
+name: بناء تطبيق أندرويد APK
+
+# بيبني ملف APK من المعمل ويحفظه في download/PhysicsLab.apk
+# فيبقى ليه لينك تحميل مباشر: https://<الحساب>.github.io/physics-lap/download/PhysicsLab.apk
+
+on:
+  push:
+    branches: [main]
+    paths: ['index.html', 'assets/**', 'voice/**', 'icons/**', 'apk/**', '.github/workflows/apk.yml']
+  workflow_run:
+    workflows: ['توليد صوت شاكر']
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apk
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: بناء الـ APK
+        env:
+          RUN_NUMBER: ${{ github.run_number }}
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
+        run: bash apk/build.sh
+
+      - name: حفظ الـ APK للتحميل
+        run: |
+          mkdir -p download
+          cp apk/PhysicsLab.apk download/PhysicsLab.apk
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add download/PhysicsLab.apk
+          git diff --cached --quiet || (git commit -m "تطبيق أندرويد: نسخة جديدة" && git pull --rebase -q && git push)
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PhysicsLab-apk
+          path: apk/PhysicsLab.apk
