@@ -1,7 +1,0 @@
-node_modules/
-www/
-android/
-aligned.apk
-PhysicsLab.apk
-package-lock.json
-*.keystore

@@ -1,6 +1,0 @@
-{
-  "appId": "com.mrmohamed.physicslab",
-  "appName": "معمل الفيزياء",
-  "webDir": "www",
-  "android": { "allowMixedContent": false, "backgroundColor": "#14204a" }
-}

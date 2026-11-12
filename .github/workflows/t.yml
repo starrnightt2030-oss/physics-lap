@@ -1,0 +1,37 @@
+name: apk-test
+on: { push: { branches: [apk-test] } }
+permissions: { contents: write }
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: curl -sSL -o lab.apk https://raw.githubusercontent.com/starrnightt2030-oss/physics-lap/main/download/PhysicsLab.apk && ls -lh lab.apk
+      - name: KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          script: |
+            adb install -r lab.apk
+            mkdir -p out
+            adb logcat -c
+            adb shell am start -n com.mrmohamed.physicslab/.MainActivity
+            sleep 25
+            adb exec-out screencap -p > out/1.png
+            adb shell input tap 540 1700
+            sleep 6
+            adb exec-out screencap -p > out/2.png
+            adb shell input keyevent 4
+            sleep 3
+            adb exec-out screencap -p > out/3.png
+            adb shell dumpsys activity activities | grep -i "physicslab" | head -5 > out/act.txt || true
+            adb logcat -d | grep -iE "Capacitor|chromium|AndroidRuntime|physicslab" | tail -200 > out/log.txt || true
+      - run: |
+          git config user.name bot; git config user.email bot@x
+          git add out; git commit -qm results; git push
