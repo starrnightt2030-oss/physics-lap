@@ -1,0 +1,5 @@
+  * Task{f365262 #9 type=standard A=10174:com.mrmohamed.physicslab U=0 visible=false visibleRequested=false mode=fullscreen translucent=true sz=1}
+    mLastPausedActivity: ActivityRecord{6f9ca61 u0 com.mrmohamed.physicslab/.MainActivity} t9}
+    * Hist  #0: ActivityRecord{6f9ca61 u0 com.mrmohamed.physicslab/.MainActivity} t9}
+      packageName=com.mrmohamed.physicslab processName=com.mrmohamed.physicslab
+      app=ProcessRecord{4c91d5c 2887:com.mrmohamed.physicslab/u0a174}

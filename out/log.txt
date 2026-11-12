@@ -1,0 +1,114 @@
+11-12 07:08:16.207   482  2083 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.mrmohamed.physicslab/.MainActivity} from uid 2000
+11-12 07:08:16.556   482   510 D CoreBackPreview: Window{e2292ee u0 Splash Screen com.mrmohamed.physicslab}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@328effa, mPriority=0}
+11-12 07:08:16.566  2887  2887 I amed.physicslab: Using CollectorTypeCC GC.
+11-12 07:08:16.567  2887  2887 W amed.physicslab: Unexpected CPU variant for x86: x86_64.
+11-12 07:08:16.567  2887  2887 W amed.physicslab: Known variants: atom, sandybridge, silvermont, kabylake, default
+11-12 07:08:16.584   482  2507 I ActivityManager: Start proc 2887:com.mrmohamed.physicslab/u0a174 for next-top-activity {com.mrmohamed.physicslab/com.mrmohamed.physicslab.MainActivity}
+11-12 07:08:16.665   482   745 I SdkSandboxManager: No SDKs used. Skipping SDK data reconcilation for CallingInfo{mUid=10174, mPackageName='com.mrmohamed.physicslab'}
+11-12 07:08:16.706  2887  2887 D nativeloader: Configuring classloader-namespace for other apk /data/app/~~HfOYjcihpOK9Q0XbwcMXwA==/com.mrmohamed.physicslab-JcjmQwJHdFKyrvnpKu38tg==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~HfOYjcihpOK9Q0XbwcMXwA==/com.mrmohamed.physicslab-JcjmQwJHdFKyrvnpKu38tg==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.mrmohamed.physicslab
+11-12 07:08:16.800  2887  2887 V GraphicsEnvironment: ANGLE Developer option for 'com.mrmohamed.physicslab' set to: 'default'
+11-12 07:08:16.819  2887  2887 V GraphicsEnvironment: ANGLE GameManagerService for com.mrmohamed.physicslab: false
+11-12 07:08:17.067  2887  2887 E amed.physicslab: Failed to open APK '/data/resource-cache/com.android.systemui-neutral-cnsG.frro': Invalid file
+11-12 07:08:17.067  2887  2887 E amed.physicslab: Failed to open APK '/data/resource-cache/com.android.systemui-accent-X8aQ.frro': Invalid file
+11-12 07:08:17.068  2887  2887 W amed.physicslab: Entry not found
+11-12 07:08:17.122  2887  2985 I cr_VariationsUtils: Failed reading seed file "/data/user/0/com.mrmohamed.physicslab/app_webview/variations_seed_new"
+11-12 07:08:17.122  2887  2985 I cr_VariationsUtils: Failed reading seed file "/data/user/0/com.mrmohamed.physicslab/app_webview/variations_seed"
+11-12 07:08:17.370   960   960 D MediaPlayerList: Name of package changed: com.mrmohamed.physicslab
+11-12 07:08:17.371   960   960 D MediaPlayerList: Name of package changed: com.mrmohamed.physicslab
+11-12 07:08:17.440  2887  2991 W chromium: [WARNING:dns_config_service_android.cc(115)] Failed to read DnsConfig.
+11-12 07:08:17.646  2887  3011 E chromium: [ERROR:simple_version_upgrade.cc(152)] Failed to write a new fake index.
+11-12 07:08:17.652  2887  3011 E chromium: [ERROR:simple_file_enumerator.cc(21)] opendir /data/user/0/com.mrmohamed.physicslab/cache/WebView/Default/HTTP Cache/Code Cache/wasm: No such file or directory (2)
+11-12 07:08:17.652  2887  3011 E chromium: [ERROR:simple_index_file.cc(614)] Could not reconstruct index from disk
+11-12 07:08:17.726  2887  2887 D Capacitor: Starting BridgeActivity
+11-12 07:08:17.977   482  2442 D CoreBackPreview: Window{308c8e3 u0 com.mrmohamed.physicslab/com.mrmohamed.physicslab.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@a4631a4, mPriority=0}
+11-12 07:08:18.328   482  1946 I WindowManager: finishDrawing of relaunch: Window{308c8e3 u0 com.mrmohamed.physicslab/com.mrmohamed.physicslab.MainActivity} 1318ms
+11-12 07:08:18.328   482  1946 D CoreBackPreview: Window{308c8e3 u0 com.mrmohamed.physicslab/com.mrmohamed.physicslab.MainActivity}: Setting back callback null
+11-12 07:08:18.329   482  2442 W InputManager-JNI: Input channel object '308c8e3 com.mrmohamed.physicslab/com.mrmohamed.physicslab.MainActivity (client)' was disposed without first being removed with the input manager!
+11-12 07:08:18.360   482   525 I ActivityManager: Start proc 3070:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0ai9000 for  {com.mrmohamed.physicslab/org.chromium.content.app.SandboxedProcessService0:0}
+11-12 07:08:18.400   482   834 D CoreBackPreview: Window{3bcef1c u0 com.mrmohamed.physicslab/com.mrmohamed.physicslab.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@be900fa, mPriority=0}
+11-12 07:08:18.408  2887  2887 W cr_AwContents: 	at org.chromium.android_webview.AwContents.m(chromium-TrichromeWebViewGoogle6432.apk-stable-541412337:10)
+11-12 07:08:18.408  2887  2887 W cr_AwContents: 	at org.chromium.android_webview.AwContents.h(chromium-TrichromeWebViewGoogle6432.apk-stable-541412337:2)
+11-12 07:08:18.408  2887  2887 W cr_AwContents: 	at com.android.webview.chromium.WebViewChromium.evaluateJavaScript(chromium-TrichromeWebViewGoogle6432.apk-stable-541412337:37)
+11-12 07:08:18.408  2887  2887 W cr_AwContents: 	at com.getcapacitor.plugin.SystemBars.lambda$injectSafeAreaCSS$5(SystemBars.java:278)
+11-12 07:08:18.408  2887  2887 W cr_AwContents: 	at com.getcapacitor.plugin.SystemBars.$r8$lambda$TNHKhinwCcf5MkP4ahZdrUqtU1k(Unknown Source:0)
+11-12 07:08:18.408  2887  2887 W cr_AwContents: 	at com.getcapacitor.plugin.SystemBars$$ExternalSyntheticLambda2.run(D8$$SyntheticClass:0)
+11-12 07:08:18.439  2887  2887 W cr_AwContents: 	at org.chromium.android_webview.AwContents.m(chromium-TrichromeWebViewGoogle6432.apk-stable-541412337:10)
+11-12 07:08:18.439  2887  2887 W cr_AwContents: 	at org.chromium.android_webview.AwContents.h(chromium-TrichromeWebViewGoogle6432.apk-stable-541412337:2)
+11-12 07:08:18.439  2887  2887 W cr_AwContents: 	at com.android.webview.chromium.WebViewChromium.evaluateJavaScript(chromium-TrichromeWebViewGoogle6432.apk-stable-541412337:37)
+11-12 07:08:18.439  2887  2887 W cr_AwContents: 	at com.getcapacitor.cordova.MockCordovaWebViewImpl.lambda$eval$0(MockCordovaWebViewImpl.java:189)
+11-12 07:08:18.439  2887  2887 W cr_AwContents: 	at com.getcapacitor.cordova.MockCordovaWebViewImpl.$r8$lambda$4KdV8CYlWQxu6zbahMKlKsvDFpM(Unknown Source:0)
+11-12 07:08:18.439  2887  2887 W cr_AwContents: 	at com.getcapacitor.cordova.MockCordovaWebViewImpl$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+11-12 07:08:18.467   482   513 I ActivityTaskManager: Displayed com.mrmohamed.physicslab/.MainActivity: +2s266ms
+11-12 07:08:18.493   482  1073 D CoreBackPreview: Window{e2292ee u0 Splash Screen com.mrmohamed.physicslab EXITING}: Setting back callback null
+11-12 07:08:18.497   482  2014 W InputManager-JNI: Input channel object 'e2292ee Splash Screen com.mrmohamed.physicslab (client)' was disposed without first being removed with the input manager!
+11-12 07:08:18.568  1485  1485 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x12000000 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=com.mrmohamed.physicslab fieldId=2131230914 fieldName=null extras=null}, false)
+11-12 07:08:18.711  3070  3070 I cr_WebViewApkApp: Launched version=109.0.5414.123 minSdkVersion=29 isBundle=false processName=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0
+11-12 07:08:18.938  1632  2219 W A       : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):5)
+11-12 07:08:18.938  1632  2219 W A       : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):5)
+11-12 07:08:19.076  1061  3106 W FontLog : No resolver, short-circuit {Noto Color Emoji Compat, wdth 100.0, wght 400, ital 0.0, bestEffort false} for com.mrmohamed.physicslab to failure [CONTEXT service_id=132 ]
+11-12 07:08:19.170  1061  1347 W FontLog : No resolver, short-circuit {Noto Color Emoji Compat, wdth 100.0, wght 400, ital 0.0, bestEffort false} for com.mrmohamed.physicslab to failure [CONTEXT service_id=132 ]
+11-12 07:08:19.318  1632  2222 W A       : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):5)
+11-12 07:08:19.319  1632  2222 W A       : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):5)
+11-12 07:08:19.582  1632  2222 W A       : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):5)
+11-12 07:08:19.605   987   987 D CarrierSvcBindHelper: onPackageAdded: com.mrmohamed.physicslab
+11-12 07:08:19.613  1632  2222 W A       : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):5)
+11-12 07:08:19.851  1632  2222 W A       : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):5)
+11-12 07:08:19.851  1632  2222 W A       : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@231818047@23.18.18 (190800-0):5)
+11-12 07:08:20.007   960   960 D MediaPlayerList: Name of package changed: com.mrmohamed.physicslab
+11-12 07:08:20.007   960   960 D MediaPlayerList: Name of package changed: com.mrmohamed.physicslab
+11-12 07:08:21.816   482  1575 W BackupTransportManager: Package com.mrmohamed.physicslab enabled setting: 0
+11-12 07:08:22.060   987   987 D ImsResolver: maybeAddedImsService, packageName: com.mrmohamed.physicslab
+11-12 07:08:23.064   482   525 I ActivityManager: Start proc 3394:com.google.android.webview:webview_apk/u0a124 for service {com.google.android.webview/org.chromium.android_webview.nonembedded.AwComponentUpdateService}
+11-12 07:08:24.935   987   987 D CarrierSvcBindHelper: onPackageModified: com.mrmohamed.physicslab
+11-12 07:08:26.323   987   987 D ImsResolver: maybeAddedImsService, packageName: com.mrmohamed.physicslab
+11-12 07:08:26.656  3394  3445 W cr_AWNetworkFetcherTask: 	at org.chromium.android_webview.nonembedded.NetworkFetcherTask.download(chromium-TrichromeWebViewGoogle6432.apk-stable-541412337:48)
+11-12 07:08:26.789  3394  3444 W cr_AWNetworkFetcherTask: 	at org.chromium.android_webview.nonembedded.NetworkFetcherTask.download(chromium-TrichromeWebViewGoogle6432.apk-stable-541412337:48)
+11-12 07:08:26.790  3394  3444 W cr_AWNetworkFetcherTask: 	at org.chromium.android_webview.nonembedded.NetworkFetcherTask.download(chromium-TrichromeWebViewGoogle6432.apk-stable-541412337:48)
+11-12 07:08:26.841  3394  3442 W cr_AWNetworkFetcherTask: 	at org.chromium.android_webview.nonembedded.NetworkFetcherTask.download(chromium-TrichromeWebViewGoogle6432.apk-stable-541412337:48)
+11-12 07:08:27.175  2887  2903 W amed.physicslab: Cleared Reference was only reachable from finalizer (only reported once)
+11-12 07:08:27.178  2887  2903 I amed.physicslab: Background concurrent copying GC freed 41779(2896KB) AllocSpace objects, 48(2936KB) LOS objects, 49% free, 3232KB/6465KB, paused 28us,14us total 152.044ms
+11-12 07:08:27.414  2887  3520 D ProfileInstaller: Installing profile for com.mrmohamed.physicslab
+11-12 07:08:30.146  1292  3378 I BlockstoreStorage: Clearing Blockstore Data for package com.mrmohamed.physicslab [CONTEXT service_id=258 ]
+11-12 07:08:30.200  1061  3488 I FontLog : Package com.mrmohamed.physicslab has no metadata [CONTEXT service_id=132 ]
+11-12 07:08:35.220  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.getEnabledCronetProviders(PG:5)
+11-12 07:08:35.220  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.createBuilderDelegate(PG:2)
+11-12 07:08:35.220  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.220  2568  2752 D StrictMode: 	at org.chromium.net.ExperimentalCronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.223  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.getEnabledCronetProviders(PG:5)
+11-12 07:08:35.223  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.createBuilderDelegate(PG:2)
+11-12 07:08:35.223  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.223  2568  2752 D StrictMode: 	at org.chromium.net.ExperimentalCronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.223  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.getEnabledCronetProviders(PG:5)
+11-12 07:08:35.223  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.createBuilderDelegate(PG:2)
+11-12 07:08:35.223  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.223  2568  2752 D StrictMode: 	at org.chromium.net.ExperimentalCronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.226  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.getEnabledCronetProviders(PG:5)
+11-12 07:08:35.226  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.createBuilderDelegate(PG:2)
+11-12 07:08:35.226  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.226  2568  2752 D StrictMode: 	at org.chromium.net.ExperimentalCronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.227  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.getEnabledCronetProviders(PG:5)
+11-12 07:08:35.227  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.createBuilderDelegate(PG:2)
+11-12 07:08:35.227  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.227  2568  2752 D StrictMode: 	at org.chromium.net.ExperimentalCronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.227  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.getEnabledCronetProviders(PG:5)
+11-12 07:08:35.227  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.createBuilderDelegate(PG:2)
+11-12 07:08:35.227  2568  2752 D StrictMode: 	at org.chromium.net.CronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.227  2568  2752 D StrictMode: 	at org.chromium.net.ExperimentalCronetEngine$Builder.<init>(PG:1)
+11-12 07:08:35.944  2568  4259 I cr_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@6c8d9e0
+11-12 07:08:40.997  4666  4666 I HibernationPolicy: ization.services=Thu Jan 01 00:00:00 UTC 1970, com.google.android.apps.youtube.music=Thu Nov 12 07:08:17 UTC 2026, com.android.bluetoothmidiservice=Thu Jan 01 00:00:00 UTC 1970, com.android.traceur=Thu Jan 01 00:00:00 UTC 1970, com.android.storagemanager.auto_generated_rro_product__=Thu Jan 01 00:00:00 UTC 1970, com.google.android.cellbroadcastreceiver=Thu Jan 01 00:00:00 UTC 1970, com.android.phone.auto_generated_rro_product__=Thu Jan 01 00:00:00 UTC 1970, android.auto_generated_rro_product__=Thu Jan 01 00:00:00 UTC 1970, com.android.bluetooth=Thu Nov 12 07:08:05 UTC 2026, com.mrmohamed.physicslab=Thu Nov 12 07:08:16 UTC 2026, com.android.providers.contacts=Thu Nov 12 07:08:30 UTC 2026, com.android.internal.systemui.navbar.gestural_narrow_back=Thu Jan 01 00:00:00 UTC 1970, com.google.android.inputmethod.latin=Thu Nov 12 07:08:07 UTC 2026, android.auto_generated_rro_vendor__=Thu Jan 01 00:00:00 UTC 1970, com.google.android.apps.restore=Thu Jan 01 00:00:00 UTC 1970}
+11-12 07:08:41.943   482   597 W InputDispatcher: Not sending touch gesture to 5159c63 ActivityRecordInputSink com.mrmohamed.physicslab/.MainActivity because it is not responsive
+11-12 07:08:43.467  4344  4344 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:43.662  4931  4931 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:48.667   482   860 I ActivityTaskManager: moveTaskToBack: Task{f365262 #9 type=standard A=10174:com.mrmohamed.physicslab}
+11-12 07:08:49.402  5094  5094 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:49.931  5150  5150 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:50.697  5183  5183 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:50.942  5209  5209 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:51.132  5239  5239 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:51.288  5260  5260 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:51.420  5280  5280 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:51.580  5298  5298 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:51.809  5316  5316 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:52.211  5341  5341 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:52.489  5366  5366 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-12 07:08:52.808  5389  5389 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
